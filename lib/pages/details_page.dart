@@ -29,7 +29,7 @@ class _DetailsPageState extends State<DetailsPage>
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 500));
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
-    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(_controller);
+    _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
     _offsetAnimation = Tween<Offset>(begin: Offset(0, 1), end: Offset(0, 0))
         .animate(_controller);
   }

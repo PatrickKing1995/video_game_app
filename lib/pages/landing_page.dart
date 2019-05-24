@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_game_app/common/app_background.dart';
+import 'package:video_game_app/common/button_collapse.dart';
 import 'package:video_game_app/common/horizontal_tab_layout.dart';
 import 'package:video_game_app/styleguide/colors.dart';
 import 'package:video_game_app/styleguide/text_styles.dart';
@@ -21,24 +22,7 @@ class LandingPage extends StatelessWidget {
               SizedBox(
                 height: 50.0,
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 20.0),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Material(
-                    elevation: 10.0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.apps,
-                        color: primaryColor,
-                      ),
-                    ),
-                    color: Colors.white,
-                    shape: CircleBorder(),
-                  ),
-                ),
-              ),
+              ButtonCollapse(),
               HeadingSubHeadingWidget(),
               SizedBox(
                 height: 20.0,

@@ -14,10 +14,23 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout>
   AnimationController _controller;
   Animation<Offset> _animation;
   Animation<double> _fadeAnimation;
+  ScrollController _scrollController;
+  GlobalKey _keyListView = GlobalKey();
+
+  _scrollListener() {
+    if (_scrollController.offset >=
+            _scrollController.position.maxScrollExtent &&
+        !_scrollController.position.outOfRange) {}
+    if (_scrollController.offset <=
+            _scrollController.position.minScrollExtent &&
+        !_scrollController.position.outOfRange) {}
+  }
 
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 800));
     _animation = Tween<Offset>(begin: Offset(0, 0), end: Offset(-0.05, 0))
@@ -28,6 +41,12 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout>
   playAnimation() {
     _controller.reset();
     _controller.forward();
+  }
+
+  _getSizes() {
+    final RenderBox renderBoxRed =
+        _keyListView.currentContext.findRenderObject();
+    final sizeListView = renderBoxRed.size;
   }
 
   @override
@@ -83,6 +102,8 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout>
                   return FadeTransition(
                     opacity: _fadeAnimation,
                     child: ListView(
+                      key: _keyListView,
+                      controller: _scrollController,
                       scrollDirection: Axis.horizontal,
                       children: getList(selectedTabIndex),
                     ),
@@ -119,9 +140,16 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout>
     ][index];
   }
 
+  _moveUp() {
+    _scrollController.animateTo(_scrollController.offset - forums.length * 280,
+        curve: Curves.linear, duration: Duration(milliseconds: 1000));
+  }
+
   onTabTap(int index) {
     setState(() {
       selectedTabIndex = index;
     });
+//    _getSizes();
+    _moveUp();
   }
 }
