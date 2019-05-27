@@ -52,7 +52,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout>
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 450.0,
+      height: 420.0,
       child: Stack(
         children: <Widget>[
           Positioned(

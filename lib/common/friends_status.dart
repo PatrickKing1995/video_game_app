@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:video_game_app/styleguide/text_styles.dart';
 import 'package:video_game_app/model/friend.dart';
+import 'package:video_game_app/styleguide/colors.dart';
+import 'package:video_game_app/styleguide/text_styles.dart';
 
 class FriendsStatus extends StatelessWidget {
   @override
@@ -16,9 +17,14 @@ class FriendsStatus extends StatelessWidget {
           ),
           Container(
             height: 100.0,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: _listFriends(),
+            child: NotificationListener<OverscrollIndicatorNotification>(
+              onNotification: (overscroll) {
+                overscroll.disallowGlow();
+              },
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: _listFriends(),
+              ),
             ),
           )
         ],
@@ -28,12 +34,24 @@ class FriendsStatus extends StatelessWidget {
 
   List<Widget> _listFriends() {
     return [
-      ThumbnailFriend(friend: Tina,),
-      ThumbnailFriend(friend: Kiki,),
-      ThumbnailFriend(friend: Martin,),
-      ThumbnailFriend(friend: Nancy,),
-      ThumbnailFriend(friend: Patrick,),
-      ThumbnailFriend(friend: Ryen,),
+      ThumbnailFriend(
+        friend: Tina,
+      ),
+      ThumbnailFriend(
+        friend: Kiki,
+      ),
+      ThumbnailFriend(
+        friend: Martin,
+      ),
+      ThumbnailFriend(
+        friend: Nancy,
+      ),
+      ThumbnailFriend(
+        friend: Patrick,
+      ),
+      ThumbnailFriend(
+        friend: Ryen,
+      ),
     ];
   }
 }
@@ -48,9 +66,9 @@ class ThumbnailFriend extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(right: 20.0),
       child: FloatingActionButton(
-        heroTag: friend.name,
+          heroTag: friend.name,
           backgroundColor:
-              friend.status == "online" ? Colors.orange : Colors.white,
+              friend.status == "online" ? primaryColor : Colors.white,
           elevation: 10.0,
           child: Padding(
             padding: const EdgeInsets.all(4.0),

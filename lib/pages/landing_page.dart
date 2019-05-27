@@ -30,20 +30,22 @@ class LandingPage extends StatelessWidget {
 //              ),
               HorizontalTabLayout(),
               FriendsStatus(),
-              Spacer(),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 85.0, vertical: 35.0),
-                  child: Text(
-                    "New Topic",
-                    style: buttonStyle,
+//              Spacer(),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 85.0, vertical: 20.0),
+                    child: Text(
+                      "New Topic",
+                      style: buttonStyle,
+                    ),
+                    decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius:
+                            BorderRadius.only(topLeft: Radius.circular(40.0))),
                   ),
-                  decoration: BoxDecoration(
-                      color: primaryColor,
-                      borderRadius:
-                          BorderRadius.only(topLeft: Radius.circular(40.0))),
                 ),
               )
             ],
