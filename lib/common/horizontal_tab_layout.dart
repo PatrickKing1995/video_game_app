@@ -32,7 +32,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout>
     _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 800));
+        vsync: this, duration: const Duration(milliseconds: 500));
     _animation = Tween<Offset>(begin: Offset(0, 0), end: Offset(-0.05, 0))
         .animate(_controller);
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
@@ -52,7 +52,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout>
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500.0,
+      height: 450.0,
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -142,7 +142,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout>
 
   _moveUp() {
     _scrollController.animateTo(_scrollController.offset - forums.length * 280,
-        curve: Curves.linear, duration: Duration(milliseconds: 1000));
+        curve: Curves.linear, duration: Duration(milliseconds: 2));
   }
 
   onTabTap(int index) {

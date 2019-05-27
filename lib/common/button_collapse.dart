@@ -81,35 +81,38 @@ class _ButtonCollapseState extends State<ButtonCollapse>
     isOpened = !isOpened;
   }
 
-  Widget image() {
+  Widget setting() {
     return new Container(
       child: FloatingActionButton(
         backgroundColor: _animationColorSub.value,
         elevation: _elevationButton.value,
         onPressed: null,
-        tooltip: 'Image',
-        heroTag: 'image',
+        tooltip: 'Setting',
+        heroTag: 'setting',
         child: Icon(
-          Icons.image,
+          Icons.settings,
           color: _animationColorIconSub.value,
         ),
       ),
     );
   }
 
-  Widget inbox() {
+  Widget user() {
     return new Container(
       child: FloatingActionButton(
-        backgroundColor: _animationColorSub.value,
-        elevation: _elevationButton.value,
-        onPressed: null,
-        heroTag: 'inbox',
-        tooltip: 'Inbox',
-        child: Icon(
-          Icons.inbox,
-          color: _animationColorIconSub.value,
-        ),
-      ),
+          backgroundColor: _animationColorSub.value,
+          elevation: _elevationButton.value,
+          heroTag: 'user',
+          tooltip: 'User',
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(40.0)),
+              child: Image.asset(
+                "assets/images/avatar.jpeg",fit: BoxFit.fill,
+              ),
+            ),
+          )),
     );
   }
 
@@ -132,7 +135,7 @@ class _ButtonCollapseState extends State<ButtonCollapse>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 20.0, top: 10.0),
+      padding: const EdgeInsets.only(right: 20.0),
       child: Align(
           alignment: Alignment.topRight,
           child: Row(
@@ -140,11 +143,11 @@ class _ButtonCollapseState extends State<ButtonCollapse>
             children: <Widget>[
               Transform(
                 transform: Matrix4.translationValues(
-                  _translateButton.value*2.0,
-                 0.0,
+                  _translateButton.value * 2.0,
+                  0.0,
                   0.0,
                 ),
-                child: image(),
+                child: setting(),
               ),
               Transform(
                 transform: Matrix4.translationValues(
@@ -152,7 +155,7 @@ class _ButtonCollapseState extends State<ButtonCollapse>
                   0.0,
                   0.0,
                 ),
-                child: inbox(),
+                child: user(),
               ),
               toggle(),
             ],

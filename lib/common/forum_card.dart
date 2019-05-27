@@ -21,7 +21,7 @@ class ForumCard extends StatelessWidget {
                 context, MaterialPageRoute(builder: (context) => DetailsPage(forum: forum)));
           },
           child: SizedBox(
-            width: 280.0,
+            width: 250.0,
             child: Card(
               margin: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 60.0),
               elevation: 20.0,

@@ -21,7 +21,7 @@ class AppBackground extends StatelessWidget {
             ),
             Positioned(
               left: -(height / 2 - width / 2),
-              bottom: height * 0.25,
+              bottom: height * 0.22,
               child: Container(
                 height: height,
                 width: height,

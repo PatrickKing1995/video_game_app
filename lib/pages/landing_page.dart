@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_game_app/common/app_background.dart';
 import 'package:video_game_app/common/button_collapse.dart';
+import 'package:video_game_app/common/friends_status.dart';
 import 'package:video_game_app/common/horizontal_tab_layout.dart';
 import 'package:video_game_app/styleguide/colors.dart';
 import 'package:video_game_app/styleguide/text_styles.dart';
@@ -24,16 +25,17 @@ class LandingPage extends StatelessWidget {
               ),
               ButtonCollapse(),
               HeadingSubHeadingWidget(),
-              SizedBox(
-                height: 20.0,
-              ),
+//              SizedBox(
+//                height: 20.0,
+//              ),
               HorizontalTabLayout(),
+              FriendsStatus(),
               Spacer(),
               Align(
                 alignment: Alignment.bottomRight,
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 60.0, vertical: 30.0),
+                      horizontal: 85.0, vertical: 35.0),
                   child: Text(
                     "New Topic",
                     style: buttonStyle,
