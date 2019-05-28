@@ -56,30 +56,38 @@ class FriendsStatus extends StatelessWidget {
   }
 }
 
-class ThumbnailFriend extends StatelessWidget {
+class ThumbnailFriend extends StatefulWidget {
   final Friend friend;
 
   ThumbnailFriend({this.friend});
 
   @override
+  _ThumbnailFriendState createState() => _ThumbnailFriendState();
+}
+
+class _ThumbnailFriendState extends State<ThumbnailFriend>
+    with SingleTickerProviderStateMixin {
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 20.0),
       child: FloatingActionButton(
-          heroTag: friend.name,
-          backgroundColor:
-              friend.status == "online" ? primaryColor : Colors.white,
-          elevation: 10.0,
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(40.0)),
-              child: Image.asset(
-                friend.avatarPath,
-                fit: BoxFit.fill,
-              ),
+        heroTag: widget.friend.name,
+        backgroundColor:
+            widget.friend.status == "online" ? primaryColor : Colors.white,
+        elevation: 10.0,
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(40.0)),
+            child: Image.asset(
+              widget.friend.avatarPath,
+              fit: BoxFit.fill,
             ),
-          )),
+          ),
+        ),
+        onPressed: () {},
+      ),
     );
   }
 }
