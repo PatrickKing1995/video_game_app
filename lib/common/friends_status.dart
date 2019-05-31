@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:video_game_app/common/custom_dialog_friend.dart';
 import 'package:video_game_app/model/friend.dart';
-import 'package:video_game_app/styleguide/colors.dart';
 import 'package:video_game_app/styleguide/text_styles.dart';
 
 class FriendsStatus extends StatelessWidget {
@@ -73,8 +73,7 @@ class _ThumbnailFriendState extends State<ThumbnailFriend>
       margin: EdgeInsets.only(right: 20.0),
       child: FloatingActionButton(
         heroTag: widget.friend.name,
-        backgroundColor:
-            widget.friend.status == "online" ? primaryColor : Colors.white,
+        backgroundColor: Colors.white,
         elevation: 10.0,
         child: Padding(
           padding: const EdgeInsets.all(4.0),
@@ -86,7 +85,12 @@ class _ThumbnailFriendState extends State<ThumbnailFriend>
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          return showDialog(
+              context: context,
+              builder: (BuildContext context) =>
+                  CustomDialogFriend(friend: widget.friend));
+        },
       ),
     );
   }
